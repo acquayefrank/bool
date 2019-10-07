@@ -35,10 +35,10 @@ def p_formular(p):
                | conjunctive_formular
                | implicative_formular
                | negative_formular
+               | '(' formular ')'
                """
     # generate_cnf(p[1])
     # generate_dnf(p[1])
-    p[0] = p[1]
 
 
 def p_var(p):
@@ -88,11 +88,11 @@ def p_error(p):
 
 yacc.yacc()
 
-# def generate_cnf(p):
-    # print(p)
+def generate_cnf(p):
+    print(p)
 
-# def generate_dnf(p):
-    # print(p)
+def generate_dnf(p):
+    print(p)
 
 if __name__ == '__main__':
     while 1:
