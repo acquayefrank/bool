@@ -1,0 +1,494 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> formular
+Rule 1     formular -> var
+Rule 2     formular -> disjunctive_formular
+Rule 3     formular -> conjunctive_formular
+Rule 4     formular -> implicative_formular
+Rule 5     var -> VAR
+Rule 6     disjunctive_formular -> ( formular DISJUNCTION formular )
+Rule 7     disjunctive_formular -> formular DISJUNCTION formular
+Rule 8     conjunctive_formular -> ( formular CONJUNCTION formular )
+Rule 9     conjunctive_formular -> formular CONJUNCTION formular
+Rule 10    implicative_formular -> ( formular IMPLICATION formular )
+Rule 11    implicative_formular -> formular IMPLICATION formular
+
+Terminals, with rules where they appear
+
+(                    : 6 8 10
+)                    : 6 8 10
+CONJUNCTION          : 8 9
+DISJUNCTION          : 6 7
+IMPLICATION          : 10 11
+VAR                  : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+conjunctive_formular : 3
+disjunctive_formular : 2
+formular             : 6 6 7 7 8 8 9 9 10 10 11 11 0
+implicative_formular : 4
+var                  : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . formular
+    (1) formular -> . var
+    (2) formular -> . disjunctive_formular
+    (3) formular -> . conjunctive_formular
+    (4) formular -> . implicative_formular
+    (5) var -> . VAR
+    (6) disjunctive_formular -> . ( formular DISJUNCTION formular )
+    (7) disjunctive_formular -> . formular DISJUNCTION formular
+    (8) conjunctive_formular -> . ( formular CONJUNCTION formular )
+    (9) conjunctive_formular -> . formular CONJUNCTION formular
+    (10) implicative_formular -> . ( formular IMPLICATION formular )
+    (11) implicative_formular -> . formular IMPLICATION formular
+
+    VAR             shift and go to state 6
+    (               shift and go to state 7
+
+    formular                       shift and go to state 1
+    var                            shift and go to state 2
+    disjunctive_formular           shift and go to state 3
+    conjunctive_formular           shift and go to state 4
+    implicative_formular           shift and go to state 5
+
+state 1
+
+    (0) S' -> formular .
+    (7) disjunctive_formular -> formular . DISJUNCTION formular
+    (9) conjunctive_formular -> formular . CONJUNCTION formular
+    (11) implicative_formular -> formular . IMPLICATION formular
+
+    DISJUNCTION     shift and go to state 8
+    CONJUNCTION     shift and go to state 9
+    IMPLICATION     shift and go to state 10
+
+
+state 2
+
+    (1) formular -> var .
+
+    DISJUNCTION     reduce using rule 1 (formular -> var .)
+    CONJUNCTION     reduce using rule 1 (formular -> var .)
+    IMPLICATION     reduce using rule 1 (formular -> var .)
+    $end            reduce using rule 1 (formular -> var .)
+    )               reduce using rule 1 (formular -> var .)
+
+
+state 3
+
+    (2) formular -> disjunctive_formular .
+
+    DISJUNCTION     reduce using rule 2 (formular -> disjunctive_formular .)
+    CONJUNCTION     reduce using rule 2 (formular -> disjunctive_formular .)
+    IMPLICATION     reduce using rule 2 (formular -> disjunctive_formular .)
+    $end            reduce using rule 2 (formular -> disjunctive_formular .)
+    )               reduce using rule 2 (formular -> disjunctive_formular .)
+
+
+state 4
+
+    (3) formular -> conjunctive_formular .
+
+    DISJUNCTION     reduce using rule 3 (formular -> conjunctive_formular .)
+    CONJUNCTION     reduce using rule 3 (formular -> conjunctive_formular .)
+    IMPLICATION     reduce using rule 3 (formular -> conjunctive_formular .)
+    $end            reduce using rule 3 (formular -> conjunctive_formular .)
+    )               reduce using rule 3 (formular -> conjunctive_formular .)
+
+
+state 5
+
+    (4) formular -> implicative_formular .
+
+    DISJUNCTION     reduce using rule 4 (formular -> implicative_formular .)
+    CONJUNCTION     reduce using rule 4 (formular -> implicative_formular .)
+    IMPLICATION     reduce using rule 4 (formular -> implicative_formular .)
+    $end            reduce using rule 4 (formular -> implicative_formular .)
+    )               reduce using rule 4 (formular -> implicative_formular .)
+
+
+state 6
+
+    (5) var -> VAR .
+
+    DISJUNCTION     reduce using rule 5 (var -> VAR .)
+    CONJUNCTION     reduce using rule 5 (var -> VAR .)
+    IMPLICATION     reduce using rule 5 (var -> VAR .)
+    $end            reduce using rule 5 (var -> VAR .)
+    )               reduce using rule 5 (var -> VAR .)
+
+
+state 7
+
+    (6) disjunctive_formular -> ( . formular DISJUNCTION formular )
+    (8) conjunctive_formular -> ( . formular CONJUNCTION formular )
+    (10) implicative_formular -> ( . formular IMPLICATION formular )
+    (1) formular -> . var
+    (2) formular -> . disjunctive_formular
+    (3) formular -> . conjunctive_formular
+    (4) formular -> . implicative_formular
+    (5) var -> . VAR
+    (6) disjunctive_formular -> . ( formular DISJUNCTION formular )
+    (7) disjunctive_formular -> . formular DISJUNCTION formular
+    (8) conjunctive_formular -> . ( formular CONJUNCTION formular )
+    (9) conjunctive_formular -> . formular CONJUNCTION formular
+    (10) implicative_formular -> . ( formular IMPLICATION formular )
+    (11) implicative_formular -> . formular IMPLICATION formular
+
+    VAR             shift and go to state 6
+    (               shift and go to state 7
+
+    formular                       shift and go to state 11
+    var                            shift and go to state 2
+    disjunctive_formular           shift and go to state 3
+    conjunctive_formular           shift and go to state 4
+    implicative_formular           shift and go to state 5
+
+state 8
+
+    (7) disjunctive_formular -> formular DISJUNCTION . formular
+    (1) formular -> . var
+    (2) formular -> . disjunctive_formular
+    (3) formular -> . conjunctive_formular
+    (4) formular -> . implicative_formular
+    (5) var -> . VAR
+    (6) disjunctive_formular -> . ( formular DISJUNCTION formular )
+    (7) disjunctive_formular -> . formular DISJUNCTION formular
+    (8) conjunctive_formular -> . ( formular CONJUNCTION formular )
+    (9) conjunctive_formular -> . formular CONJUNCTION formular
+    (10) implicative_formular -> . ( formular IMPLICATION formular )
+    (11) implicative_formular -> . formular IMPLICATION formular
+
+    VAR             shift and go to state 6
+    (               shift and go to state 7
+
+    formular                       shift and go to state 12
+    var                            shift and go to state 2
+    disjunctive_formular           shift and go to state 3
+    conjunctive_formular           shift and go to state 4
+    implicative_formular           shift and go to state 5
+
+state 9
+
+    (9) conjunctive_formular -> formular CONJUNCTION . formular
+    (1) formular -> . var
+    (2) formular -> . disjunctive_formular
+    (3) formular -> . conjunctive_formular
+    (4) formular -> . implicative_formular
+    (5) var -> . VAR
+    (6) disjunctive_formular -> . ( formular DISJUNCTION formular )
+    (7) disjunctive_formular -> . formular DISJUNCTION formular
+    (8) conjunctive_formular -> . ( formular CONJUNCTION formular )
+    (9) conjunctive_formular -> . formular CONJUNCTION formular
+    (10) implicative_formular -> . ( formular IMPLICATION formular )
+    (11) implicative_formular -> . formular IMPLICATION formular
+
+    VAR             shift and go to state 6
+    (               shift and go to state 7
+
+    formular                       shift and go to state 13
+    var                            shift and go to state 2
+    disjunctive_formular           shift and go to state 3
+    conjunctive_formular           shift and go to state 4
+    implicative_formular           shift and go to state 5
+
+state 10
+
+    (11) implicative_formular -> formular IMPLICATION . formular
+    (1) formular -> . var
+    (2) formular -> . disjunctive_formular
+    (3) formular -> . conjunctive_formular
+    (4) formular -> . implicative_formular
+    (5) var -> . VAR
+    (6) disjunctive_formular -> . ( formular DISJUNCTION formular )
+    (7) disjunctive_formular -> . formular DISJUNCTION formular
+    (8) conjunctive_formular -> . ( formular CONJUNCTION formular )
+    (9) conjunctive_formular -> . formular CONJUNCTION formular
+    (10) implicative_formular -> . ( formular IMPLICATION formular )
+    (11) implicative_formular -> . formular IMPLICATION formular
+
+    VAR             shift and go to state 6
+    (               shift and go to state 7
+
+    formular                       shift and go to state 14
+    var                            shift and go to state 2
+    disjunctive_formular           shift and go to state 3
+    conjunctive_formular           shift and go to state 4
+    implicative_formular           shift and go to state 5
+
+state 11
+
+    (6) disjunctive_formular -> ( formular . DISJUNCTION formular )
+    (8) conjunctive_formular -> ( formular . CONJUNCTION formular )
+    (10) implicative_formular -> ( formular . IMPLICATION formular )
+    (7) disjunctive_formular -> formular . DISJUNCTION formular
+    (9) conjunctive_formular -> formular . CONJUNCTION formular
+    (11) implicative_formular -> formular . IMPLICATION formular
+
+    DISJUNCTION     shift and go to state 15
+    CONJUNCTION     shift and go to state 16
+    IMPLICATION     shift and go to state 17
+
+
+state 12
+
+    (7) disjunctive_formular -> formular DISJUNCTION formular .
+    (7) disjunctive_formular -> formular . DISJUNCTION formular
+    (9) conjunctive_formular -> formular . CONJUNCTION formular
+    (11) implicative_formular -> formular . IMPLICATION formular
+
+  ! shift/reduce conflict for DISJUNCTION resolved as shift
+  ! shift/reduce conflict for CONJUNCTION resolved as shift
+  ! shift/reduce conflict for IMPLICATION resolved as shift
+    $end            reduce using rule 7 (disjunctive_formular -> formular DISJUNCTION formular .)
+    )               reduce using rule 7 (disjunctive_formular -> formular DISJUNCTION formular .)
+    DISJUNCTION     shift and go to state 8
+    CONJUNCTION     shift and go to state 9
+    IMPLICATION     shift and go to state 10
+
+  ! DISJUNCTION     [ reduce using rule 7 (disjunctive_formular -> formular DISJUNCTION formular .) ]
+  ! CONJUNCTION     [ reduce using rule 7 (disjunctive_formular -> formular DISJUNCTION formular .) ]
+  ! IMPLICATION     [ reduce using rule 7 (disjunctive_formular -> formular DISJUNCTION formular .) ]
+
+
+state 13
+
+    (9) conjunctive_formular -> formular CONJUNCTION formular .
+    (7) disjunctive_formular -> formular . DISJUNCTION formular
+    (9) conjunctive_formular -> formular . CONJUNCTION formular
+    (11) implicative_formular -> formular . IMPLICATION formular
+
+  ! shift/reduce conflict for DISJUNCTION resolved as shift
+  ! shift/reduce conflict for CONJUNCTION resolved as shift
+  ! shift/reduce conflict for IMPLICATION resolved as shift
+    $end            reduce using rule 9 (conjunctive_formular -> formular CONJUNCTION formular .)
+    )               reduce using rule 9 (conjunctive_formular -> formular CONJUNCTION formular .)
+    DISJUNCTION     shift and go to state 8
+    CONJUNCTION     shift and go to state 9
+    IMPLICATION     shift and go to state 10
+
+  ! DISJUNCTION     [ reduce using rule 9 (conjunctive_formular -> formular CONJUNCTION formular .) ]
+  ! CONJUNCTION     [ reduce using rule 9 (conjunctive_formular -> formular CONJUNCTION formular .) ]
+  ! IMPLICATION     [ reduce using rule 9 (conjunctive_formular -> formular CONJUNCTION formular .) ]
+
+
+state 14
+
+    (11) implicative_formular -> formular IMPLICATION formular .
+    (7) disjunctive_formular -> formular . DISJUNCTION formular
+    (9) conjunctive_formular -> formular . CONJUNCTION formular
+    (11) implicative_formular -> formular . IMPLICATION formular
+
+  ! shift/reduce conflict for DISJUNCTION resolved as shift
+  ! shift/reduce conflict for CONJUNCTION resolved as shift
+  ! shift/reduce conflict for IMPLICATION resolved as shift
+    $end            reduce using rule 11 (implicative_formular -> formular IMPLICATION formular .)
+    )               reduce using rule 11 (implicative_formular -> formular IMPLICATION formular .)
+    DISJUNCTION     shift and go to state 8
+    CONJUNCTION     shift and go to state 9
+    IMPLICATION     shift and go to state 10
+
+  ! DISJUNCTION     [ reduce using rule 11 (implicative_formular -> formular IMPLICATION formular .) ]
+  ! CONJUNCTION     [ reduce using rule 11 (implicative_formular -> formular IMPLICATION formular .) ]
+  ! IMPLICATION     [ reduce using rule 11 (implicative_formular -> formular IMPLICATION formular .) ]
+
+
+state 15
+
+    (6) disjunctive_formular -> ( formular DISJUNCTION . formular )
+    (7) disjunctive_formular -> formular DISJUNCTION . formular
+    (1) formular -> . var
+    (2) formular -> . disjunctive_formular
+    (3) formular -> . conjunctive_formular
+    (4) formular -> . implicative_formular
+    (5) var -> . VAR
+    (6) disjunctive_formular -> . ( formular DISJUNCTION formular )
+    (7) disjunctive_formular -> . formular DISJUNCTION formular
+    (8) conjunctive_formular -> . ( formular CONJUNCTION formular )
+    (9) conjunctive_formular -> . formular CONJUNCTION formular
+    (10) implicative_formular -> . ( formular IMPLICATION formular )
+    (11) implicative_formular -> . formular IMPLICATION formular
+
+    VAR             shift and go to state 6
+    (               shift and go to state 7
+
+    formular                       shift and go to state 18
+    var                            shift and go to state 2
+    disjunctive_formular           shift and go to state 3
+    conjunctive_formular           shift and go to state 4
+    implicative_formular           shift and go to state 5
+
+state 16
+
+    (8) conjunctive_formular -> ( formular CONJUNCTION . formular )
+    (9) conjunctive_formular -> formular CONJUNCTION . formular
+    (1) formular -> . var
+    (2) formular -> . disjunctive_formular
+    (3) formular -> . conjunctive_formular
+    (4) formular -> . implicative_formular
+    (5) var -> . VAR
+    (6) disjunctive_formular -> . ( formular DISJUNCTION formular )
+    (7) disjunctive_formular -> . formular DISJUNCTION formular
+    (8) conjunctive_formular -> . ( formular CONJUNCTION formular )
+    (9) conjunctive_formular -> . formular CONJUNCTION formular
+    (10) implicative_formular -> . ( formular IMPLICATION formular )
+    (11) implicative_formular -> . formular IMPLICATION formular
+
+    VAR             shift and go to state 6
+    (               shift and go to state 7
+
+    formular                       shift and go to state 19
+    var                            shift and go to state 2
+    disjunctive_formular           shift and go to state 3
+    conjunctive_formular           shift and go to state 4
+    implicative_formular           shift and go to state 5
+
+state 17
+
+    (10) implicative_formular -> ( formular IMPLICATION . formular )
+    (11) implicative_formular -> formular IMPLICATION . formular
+    (1) formular -> . var
+    (2) formular -> . disjunctive_formular
+    (3) formular -> . conjunctive_formular
+    (4) formular -> . implicative_formular
+    (5) var -> . VAR
+    (6) disjunctive_formular -> . ( formular DISJUNCTION formular )
+    (7) disjunctive_formular -> . formular DISJUNCTION formular
+    (8) conjunctive_formular -> . ( formular CONJUNCTION formular )
+    (9) conjunctive_formular -> . formular CONJUNCTION formular
+    (10) implicative_formular -> . ( formular IMPLICATION formular )
+    (11) implicative_formular -> . formular IMPLICATION formular
+
+    VAR             shift and go to state 6
+    (               shift and go to state 7
+
+    formular                       shift and go to state 20
+    var                            shift and go to state 2
+    disjunctive_formular           shift and go to state 3
+    conjunctive_formular           shift and go to state 4
+    implicative_formular           shift and go to state 5
+
+state 18
+
+    (6) disjunctive_formular -> ( formular DISJUNCTION formular . )
+    (7) disjunctive_formular -> formular DISJUNCTION formular .
+    (7) disjunctive_formular -> formular . DISJUNCTION formular
+    (9) conjunctive_formular -> formular . CONJUNCTION formular
+    (11) implicative_formular -> formular . IMPLICATION formular
+
+  ! shift/reduce conflict for DISJUNCTION resolved as shift
+  ! shift/reduce conflict for CONJUNCTION resolved as shift
+  ! shift/reduce conflict for IMPLICATION resolved as shift
+    )               shift and go to state 21
+    DISJUNCTION     shift and go to state 8
+    CONJUNCTION     shift and go to state 9
+    IMPLICATION     shift and go to state 10
+
+  ! DISJUNCTION     [ reduce using rule 7 (disjunctive_formular -> formular DISJUNCTION formular .) ]
+  ! CONJUNCTION     [ reduce using rule 7 (disjunctive_formular -> formular DISJUNCTION formular .) ]
+  ! IMPLICATION     [ reduce using rule 7 (disjunctive_formular -> formular DISJUNCTION formular .) ]
+
+
+state 19
+
+    (8) conjunctive_formular -> ( formular CONJUNCTION formular . )
+    (9) conjunctive_formular -> formular CONJUNCTION formular .
+    (7) disjunctive_formular -> formular . DISJUNCTION formular
+    (9) conjunctive_formular -> formular . CONJUNCTION formular
+    (11) implicative_formular -> formular . IMPLICATION formular
+
+  ! shift/reduce conflict for DISJUNCTION resolved as shift
+  ! shift/reduce conflict for CONJUNCTION resolved as shift
+  ! shift/reduce conflict for IMPLICATION resolved as shift
+    )               shift and go to state 22
+    DISJUNCTION     shift and go to state 8
+    CONJUNCTION     shift and go to state 9
+    IMPLICATION     shift and go to state 10
+
+  ! DISJUNCTION     [ reduce using rule 9 (conjunctive_formular -> formular CONJUNCTION formular .) ]
+  ! CONJUNCTION     [ reduce using rule 9 (conjunctive_formular -> formular CONJUNCTION formular .) ]
+  ! IMPLICATION     [ reduce using rule 9 (conjunctive_formular -> formular CONJUNCTION formular .) ]
+
+
+state 20
+
+    (10) implicative_formular -> ( formular IMPLICATION formular . )
+    (11) implicative_formular -> formular IMPLICATION formular .
+    (7) disjunctive_formular -> formular . DISJUNCTION formular
+    (9) conjunctive_formular -> formular . CONJUNCTION formular
+    (11) implicative_formular -> formular . IMPLICATION formular
+
+  ! shift/reduce conflict for DISJUNCTION resolved as shift
+  ! shift/reduce conflict for CONJUNCTION resolved as shift
+  ! shift/reduce conflict for IMPLICATION resolved as shift
+    )               shift and go to state 23
+    DISJUNCTION     shift and go to state 8
+    CONJUNCTION     shift and go to state 9
+    IMPLICATION     shift and go to state 10
+
+  ! DISJUNCTION     [ reduce using rule 11 (implicative_formular -> formular IMPLICATION formular .) ]
+  ! CONJUNCTION     [ reduce using rule 11 (implicative_formular -> formular IMPLICATION formular .) ]
+  ! IMPLICATION     [ reduce using rule 11 (implicative_formular -> formular IMPLICATION formular .) ]
+
+
+state 21
+
+    (6) disjunctive_formular -> ( formular DISJUNCTION formular ) .
+
+    DISJUNCTION     reduce using rule 6 (disjunctive_formular -> ( formular DISJUNCTION formular ) .)
+    CONJUNCTION     reduce using rule 6 (disjunctive_formular -> ( formular DISJUNCTION formular ) .)
+    IMPLICATION     reduce using rule 6 (disjunctive_formular -> ( formular DISJUNCTION formular ) .)
+    $end            reduce using rule 6 (disjunctive_formular -> ( formular DISJUNCTION formular ) .)
+    )               reduce using rule 6 (disjunctive_formular -> ( formular DISJUNCTION formular ) .)
+
+
+state 22
+
+    (8) conjunctive_formular -> ( formular CONJUNCTION formular ) .
+
+    DISJUNCTION     reduce using rule 8 (conjunctive_formular -> ( formular CONJUNCTION formular ) .)
+    CONJUNCTION     reduce using rule 8 (conjunctive_formular -> ( formular CONJUNCTION formular ) .)
+    IMPLICATION     reduce using rule 8 (conjunctive_formular -> ( formular CONJUNCTION formular ) .)
+    $end            reduce using rule 8 (conjunctive_formular -> ( formular CONJUNCTION formular ) .)
+    )               reduce using rule 8 (conjunctive_formular -> ( formular CONJUNCTION formular ) .)
+
+
+state 23
+
+    (10) implicative_formular -> ( formular IMPLICATION formular ) .
+
+    DISJUNCTION     reduce using rule 10 (implicative_formular -> ( formular IMPLICATION formular ) .)
+    CONJUNCTION     reduce using rule 10 (implicative_formular -> ( formular IMPLICATION formular ) .)
+    IMPLICATION     reduce using rule 10 (implicative_formular -> ( formular IMPLICATION formular ) .)
+    $end            reduce using rule 10 (implicative_formular -> ( formular IMPLICATION formular ) .)
+    )               reduce using rule 10 (implicative_formular -> ( formular IMPLICATION formular ) .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for DISJUNCTION in state 12 resolved as shift
+WARNING: shift/reduce conflict for CONJUNCTION in state 12 resolved as shift
+WARNING: shift/reduce conflict for IMPLICATION in state 12 resolved as shift
+WARNING: shift/reduce conflict for DISJUNCTION in state 13 resolved as shift
+WARNING: shift/reduce conflict for CONJUNCTION in state 13 resolved as shift
+WARNING: shift/reduce conflict for IMPLICATION in state 13 resolved as shift
+WARNING: shift/reduce conflict for DISJUNCTION in state 14 resolved as shift
+WARNING: shift/reduce conflict for CONJUNCTION in state 14 resolved as shift
+WARNING: shift/reduce conflict for IMPLICATION in state 14 resolved as shift
+WARNING: shift/reduce conflict for DISJUNCTION in state 18 resolved as shift
+WARNING: shift/reduce conflict for CONJUNCTION in state 18 resolved as shift
+WARNING: shift/reduce conflict for IMPLICATION in state 18 resolved as shift
+WARNING: shift/reduce conflict for DISJUNCTION in state 19 resolved as shift
+WARNING: shift/reduce conflict for CONJUNCTION in state 19 resolved as shift
+WARNING: shift/reduce conflict for IMPLICATION in state 19 resolved as shift
+WARNING: shift/reduce conflict for DISJUNCTION in state 20 resolved as shift
+WARNING: shift/reduce conflict for CONJUNCTION in state 20 resolved as shift
+WARNING: shift/reduce conflict for IMPLICATION in state 20 resolved as shift

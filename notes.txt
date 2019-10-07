@@ -1,0 +1,13 @@
+/\ --- Conjunction
+\/ --- Disjunction
+-> --- Implication
+~ --- Negation
+
+Conjunctive Normal Form
+
+Disjunctive Normal Form
+
+Fm ::= Var | (Fm \/ Fm) | (Fm /\ Fm) | (Fm -> Fm)
+
+tokens = ['Var']
+literals 
