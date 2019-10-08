@@ -17,7 +17,6 @@ t_ignore = " \t"
 
 clauses = []
 
-
 def _clean_clause(p):
     return [ x for x in p if x ]
 
@@ -83,7 +82,7 @@ def p_paren_conjunctive_formular(p):
     paren_conjunctive_formular : '(' formular CONJUNCTION formular ')'
     """
     clauses.append(_clean_clause(p))
-
+    clauses.append(p[3])
 
 def p_no_paren_conjunctive_formular(p):
     """
@@ -116,13 +115,6 @@ def p_negative_formular(p):
     """
     negative_formular : no_paren_negative_formular
     """
-
-
-# def p_paren_negative_formular(p):
-#     """
-#     paren_negative_formular : '~' '(' formular ')'
-#     """
-#     clauses.append(_clean_clause(p))
 
 
 def p_no_paren_negative_formular(p):
