@@ -28,3 +28,5 @@ Run the command below:
 > python bool.py 
 
 NB// Works as a terminal app
+
+PS// Had a lot of help from some collegues.
