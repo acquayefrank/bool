@@ -26,3 +26,5 @@ Download and install [PLY](https://www.dabeaz.com/ply/)
 Navigate to the folder
 Run the command below:
 > python bool.py 
+
+NB// Works as a terminal app
