@@ -29,4 +29,4 @@ Run the command below:
 
 NB// Works as a terminal app
 
-PS// Had a lot of help from some collegues.
+PS// Had a lot of help from some collegues :)
