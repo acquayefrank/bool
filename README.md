@@ -30,3 +30,6 @@ Run the command below:
 NB// Works as a terminal app
 
 PS// Had a lot of help from some collegues :)
+
+## Sample Tests
+`(p -> q) /\ (~r / s) /\ (~q -> p)`
