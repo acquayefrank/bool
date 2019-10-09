@@ -1,7 +1,6 @@
 import ply.lex as lex
 import ply.yacc as yacc
 
-values_of_variables = []
 
 tokens = [
     'VAR',
@@ -12,9 +11,11 @@ tokens = [
     'RPAREN',
 ]
 
+
 states = (
     ('negation', 'exclusive'),
 )
+
 
 t_IMPLICATION = r'->'
 t_CONJUNCTION = r'/\\'
@@ -22,76 +23,92 @@ t_DISJUNCTION = r'\\/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 
+
 def t_NEGATION(t):
     r'~'
     t.lexer.begin('negation')
 
+
 def t_negation_VAR(t):
     r'[a-z]'
     val = t.value
-    if val in values_of_variables:
-        t.value = values_of_variables.index(val) + 1
+    if val in t.lexer.values_of_variables:
+        t.value = t.lexer.values_of_variables.index(val) + 1
     else:
-        values_of_variables.append(val)
-        t.value = len(values_of_variables)
-    t.value*=(-1)
+        t.lexer.values_of_variables.append(val)
+        t.value = len(t.lexer.values_of_variables)
+    t.value *= (-1)
     t.lexer.begin('INITIAL')
     return t
 
+
 def t_VAR(t):
     r'[a-z]'
-    val=t.value
-    if val in values_of_variables:
-        t.value=values_of_variables.index(val)+1
+    val = t.value
+    if val in t.lexer.values_of_variables:
+        t.value = t.lexer.values_of_variables.index(val)+1
     else:
-        values_of_variables.append(val)
-        t.value = len(values_of_variables)
+        t.lexer.values_of_variables.append(val)
+        t.value = len(t.lexer.values_of_variables)
     return t
+
 
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
+
 t_negation_ignore = " \t\n"
 
-t_ignore  = ' \t'
+
+t_ignore = ' \t'
+
 
 def t_negation_error(t):
     print('Lexical error: "' + str(t.value[0]) + '" in line ' + str(t.lineno))
     t.lexer.skip(1)
 
+
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
+
 lexer = lex.lex()
+lexer.values_of_variables = []
 
+clauses = []
 
-clauses=[]
 
 def p_Fm_conj(p):
     'Fm : Fm CONJUNCTION Clause'
     clauses.append(p[3])
 
+
 def p_Fm_term(p):
     'Fm : Clause'
     clauses.append(p[1])
 
+
 def p_Clause_impl(p):
     'Clause : LPAREN Var IMPLICATION Var RPAREN'
-    p[0]=((-1)*p[2], p[4])
+    p[0] = ((-1) * p[2], p[4])
+
 
 def p_term_disj(p):
     'Clause : LPAREN Var DISJUNCTION Var RPAREN'
-    p[0]=(p[2] , p[4])
+    p[0] = (p[2] , p[4])
+
 
 def p_term_literal(p):
     'Clause : Var'
-    p[0]=(p[1],0)
+    p[0] = (p[1],0)
+
 
 def p_literal_simple(p):
     'Var : VAR'
     p[0] = p[1]
+
 
 def p_error(p):
     message = """
@@ -105,6 +122,7 @@ def p_error(p):
             """
     print(message)
     raise SyntaxError("error in input!")
+
 
 def find_resolution(el1, el2):
     for i in range(2):
@@ -131,20 +149,20 @@ def resolution(left_bound, arr):
                 arr.append(new_elem)
     return init_size, arr
 
-def launch(clauses):
+
+def main(clauses):
     left_bound=1
     while left_bound!=len(clauses):
         left_bound,clauses=resolution(left_bound,clauses)
         if left_bound== -1:
-            print("\n\t\tunsatisfiable")
             return False
-    print("\n\t\tsatisfiable")
     return True
 
 
 if __name__ == '__main__':
     parser = yacc.yacc()
     print("(Works with 2CNF)")
+    print("type exit in order to close bool")
     while True:
         try:
             s = input('\nbool > ')
@@ -155,8 +173,12 @@ if __name__ == '__main__':
         if not s: continue
 
         try:
-            result = parser.parse(s)
-            res=launch(clauses)
+            parser.parse(s)
+            is_satisfiable = main(clauses)
+            if is_satisfiable:
+                print('\033[1;32;40m' + '\n\t{}\tis satisfiable'.format(s) + '\x1b[0m')
+            else:
+                print('\033[1;31;40m' + '\n\t{}\tis unsatisfiable'.format(s) + '\x1b[0m')
         except SyntaxError:
             continue
         clauses.clear() # Used to fix sideeffects
