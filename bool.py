@@ -127,8 +127,8 @@ def p_error(p):
 def find_resolution(el1, el2):
     for i in range(2):
         for j in range(2):
-            if el1[i]!=0 and el2[j]!=0 and el1[i]+el2[j]==0:
-                new_pair=(el1[(i+1)%2],el2[(j+1)%2])
+            if el1[i] != 0 and el2[j] != 0 and el1[i] + el2[j] == 0:
+                new_pair = (el1[(i+1)%2],el2[(j+1)%2])
                 if new_pair[0] != 0 and new_pair[1] != 0 and new_pair[0] + new_pair[1] == 0:
                     return (0,0)
                 return new_pair
@@ -136,15 +136,15 @@ def find_resolution(el1, el2):
 
 
 def resolution(left_bound, arr):
-    init_size=len(arr)
+    init_size = len(arr)
     for i in range(left_bound, init_size):
-        elem=arr[i]
-        for j in range(0,left_bound):
-            new_elem=find_resolution(elem, arr[j])
-            if new_elem==0:
+        elem = arr[i]
+        for j in range(0, left_bound):
+            new_elem = find_resolution(elem, arr[j])
+            if new_elem == 0:
                 continue
             if new_elem == (0,0):
-                return -1,arr
+                return -1, arr
             else:
                 arr.append(new_elem)
     return init_size, arr
@@ -152,9 +152,9 @@ def resolution(left_bound, arr):
 
 def main(clauses):
     left_bound=1
-    while left_bound!=len(clauses):
-        left_bound,clauses=resolution(left_bound,clauses)
-        if left_bound== -1:
+    while left_bound != len(clauses):
+        left_bound, clauses = resolution(left_bound,clauses)
+        if left_bound == -1:
             return False
     return True
 
