@@ -1,7 +1,7 @@
 import ply.lex as lex
 import ply.yacc as yacc
 
-values_of_variables=[]
+values_of_variables = []
 
 tokens = [
     'VAR',
@@ -22,7 +22,7 @@ t_DISJUNCTION = r'\\/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 
-def t_NEG(t):
+def t_NEGATION(t):
     r'~'
     t.lexer.begin('negation')
 
@@ -68,13 +68,6 @@ lexer = lex.lex()
 
 
 clauses=[]
-
-'''
-Fm      ::= Fm CONJUNCTION Clause | Clause  
-Clause  ::= LPAREN Var IMPLICATION Var RPAREN |
-            LPAREN Var DISJUNCTION Var RPAREN |
-            Var
-'''
 
 def p_Fm_conj(p):
     'Fm : Fm CONJUNCTION Clause'
@@ -151,9 +144,10 @@ def launch(clauses):
 
 if __name__ == '__main__':
     parser = yacc.yacc()
+    print("(Works with 2CNF)")
     while True:
         try:
-            s = input('\nbool (Works with 2CNF) > ')
+            s = input('\nbool > ')
             if s == 'exit':
                 break
         except EOFError:
