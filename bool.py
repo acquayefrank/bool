@@ -137,6 +137,7 @@ def find_resolution(el1, el2):
 
 def resolution(left_bound, arr):
     init_size = len(arr)
+    # NB For edge cases
     if len(arr) == 2:
         abs_set_one = abs(arr[0][0]), abs(abs(arr[0][1]))
         abs_set_two = abs(arr[1][0]), abs(abs(arr[1][1]))
